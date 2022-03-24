@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import icnLoader from "./loader.svg";
-import useApp from "../../hooks/useApp";
-import { themes } from "../../styles/ColorStyles";
-import { Caption } from "../../styles/TextStyles";
+import styled from 'styled-components';
+import icnLoader from './loader.svg';
+import useApp from '../../hooks/useApp';
+import { themes } from '../../styles/ColorStyles';
+import { Caption } from '../../styles/TextStyles';
 
 export default function Loader() {
   const { notifications } = useApp();
@@ -39,7 +39,6 @@ const LoaderCard = styled.div`
   font-size: 24px;
   text-align: center;
   color: ${themes.dark.text1};
-
 `;
 
 const LoaderImg = styled.img`

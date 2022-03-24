@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import { themes } from "../../styles/ColorStyles";
+import styled from 'styled-components';
+import { themes } from '../../styles/ColorStyles';
 
 interface MenuButtonProps {
-  isVisible: Boolean;
+  isVisible: boolean;
   toggle: () => void;
   actions: Array<MenuAction>;
   xAxis?: number;
   yAxis?: number;
-  dotButtonColorLight?: Boolean;
+  dotButtonColorLight?: boolean;
 }
 
 export interface MenuAction {
@@ -25,7 +25,8 @@ export function MenuButton(props: MenuButtonProps) {
 
   return (
     <>
-      <KebabButton data-testid="menuButton"
+      <KebabButton
+        data-testid="menuButton"
         onClick={(e: React.MouseEvent<HTMLElement>) => toggleMenu(e)}
       >
         <KebabDot dotButtonColorLight={props.dotButtonColorLight} />
@@ -37,11 +38,7 @@ export function MenuButton(props: MenuButtonProps) {
           <MenuDropDownOverlay onClick={toggleMenu} />
           <MenuDropDown xAxis={props.xAxis} yAxis={props.yAxis}>
             {props.actions.map((action, index) => (
-              <MenuDropDownItem
-                isWarning={action.isWarning}
-                onClick={action.action}
-                key={index}
-              >
+              <MenuDropDownItem isWarning={action.isWarning} onClick={action.action} key={index}>
                 {action.title}
               </MenuDropDownItem>
             ))}
@@ -52,7 +49,6 @@ export function MenuButton(props: MenuButtonProps) {
   );
 }
 
-
 const KebabButton = styled.button`
   border: none;
   background: none;
@@ -61,7 +57,7 @@ const KebabButton = styled.button`
 `;
 
 interface KebabDotProps {
-  dotButtonColorLight?: Boolean;
+  dotButtonColorLight?: boolean;
 }
 
 const KebabDot = styled.div<KebabDotProps>`
@@ -84,8 +80,8 @@ interface MenuDropDownProps {
 const MenuDropDown = styled.div<MenuDropDownProps>`
   position: absolute;
 
-  right: ${(props) => props.xAxis ? `${props.xAxis}px` : "6px"};
-  top: ${(props) => props.yAxis ? `${props.yAxis}px` : "30px"};
+  right: ${(props) => (props.xAxis ? `${props.xAxis}px` : '6px')};
+  top: ${(props) => (props.yAxis ? `${props.yAxis}px` : '30px')};
 
   border-radius: 4px;
   background-color: ${themes.light.card.backgroundColorFull};
@@ -108,7 +104,7 @@ const MenuDropDownOverlay = styled.div`
 `;
 
 interface MenuDropDownItemProps {
-  isWarning: Boolean;
+  isWarning: boolean;
 }
 
 const MenuDropDownItem = styled.button<MenuDropDownItemProps>`
@@ -118,11 +114,9 @@ const MenuDropDownItem = styled.button<MenuDropDownItemProps>`
   background: none;
   margin: 6px 0px;
   cursor: pointer;
-  color: ${(props) =>
-    props.isWarning ? themes.light.warning : themes.light.text1};
+  color: ${(props) => (props.isWarning ? themes.light.warning : themes.light.text1)};
 
   @media (prefers-color-scheme: dark) {
-    color: ${(props) =>
-      props.isWarning ? themes.light.warning : themes.dark.text1};
+    color: ${(props) => (props.isWarning ? themes.light.warning : themes.dark.text1)};
   }
 `;

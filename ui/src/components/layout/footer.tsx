@@ -1,18 +1,16 @@
-import React from "react"
-import styled from "styled-components"
-import { themes } from "../../styles/ColorStyles"
-
+import React from 'react';
+import styled from 'styled-components';
+import { themes } from '../../styles/ColorStyles';
 
 const Footer = () => {
   return (
     <Wrapper>
-      <ContentWrapper>
-      </ContentWrapper>
+      <ContentWrapper></ContentWrapper>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
 
 const Wrapper = styled.div`
   position: relative;
@@ -24,14 +22,14 @@ const Wrapper = styled.div`
   padding-top: 250px;
   background-color: ${themes.light.primary};
 
-  @media(prefers-color-scheme: dark) {
-      background-color: ${themes.dark.primary};
+  @media (prefers-color-scheme: dark) {
+    background-color: ${themes.dark.primary};
   }
 
   @media (max-width: 550px) {
     top: 10px;
   }
-`
+`;
 
 // const LinkWrapper = styled.div`
 //   display: grid;
@@ -66,4 +64,4 @@ const ContentWrapper = styled.div`
     grid-template-columns: 1fr;
     justify-items: center;
   }
-`
+`;

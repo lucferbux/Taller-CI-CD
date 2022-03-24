@@ -9,8 +9,6 @@ import reportWebVitals from './reportWebVitals';
 import { HelmetProvider } from 'react-helmet-async';
 import { ProjectProvider } from './context/ProjectContext';
 
-
-
 ReactDOM.render(
   <React.StrictMode>
     <HelmetProvider>
@@ -20,7 +18,7 @@ ReactDOM.render(
             <App />
           </ProjectProvider>
         </AppProvider>
-      </AuthProvider>  
+      </AuthProvider>
     </HelmetProvider>
   </React.StrictMode>,
   document.getElementById('root')

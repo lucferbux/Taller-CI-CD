@@ -6,7 +6,6 @@
 let baseUrl = process.env.REACT_APP_BASE_URI;
 let apiBaseUrl = process.env.REACT_APP_API_URI;
 
-
 if (baseUrl) {
   apiBaseUrl = apiBaseUrl ?? '';
   baseUrl = baseUrl + apiBaseUrl;

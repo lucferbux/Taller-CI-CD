@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { Route, Redirect } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import React, { useEffect } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 function PrivateRoute({ children, ...rest }: any) {
-  let { user, loadUser } = useAuth();
+  const { user, loadUser } = useAuth();
 
   useEffect(() => {
     loadUser();
@@ -18,8 +18,8 @@ function PrivateRoute({ children, ...rest }: any) {
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
-              state: { from: location },
+              pathname: '/login',
+              state: { from: location }
             }}
           />
         )

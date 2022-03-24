@@ -1,5 +1,5 @@
-import { AboutMe } from "../model/aboutme";
-import { Project } from "../model/project";
+import { AboutMe } from '../model/aboutme';
+import { Project } from '../model/project';
 
 export interface ApiError {
   description?: string;
@@ -12,7 +12,9 @@ export class GenericError implements ApiError {
     this.httpCode = httpCode;
     this.description = description;
   }
+
   httpCode: number;
+
   description: string;
 }
 
@@ -31,7 +33,7 @@ export interface TokenResponse {
 }
 
 export interface ProjectResponse {
-  message: string
+  message: string;
 }
 
 export default interface ApiClient {

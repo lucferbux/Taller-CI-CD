@@ -1,8 +1,8 @@
-import { createContext, ReactNode, useCallback, useState } from "react";
-import { Project } from "../model/project";
+import { createContext, ReactNode, useCallback, useState } from 'react';
+import { Project } from '../model/project';
 
 const ProjectContext = createContext<any>({
-  project: undefined,
+  project: undefined
 });
 
 interface Props {
@@ -13,8 +13,8 @@ export function ProjectProvider({ children }: Props) {
   const [project, setProject] = useState<Project | undefined>(undefined);
 
   const setProjectOrUndefined = useCallback(
-    (project: Project | undefined) => {
-      setProject(project);
+    (projectToFill: Project | undefined) => {
+      setProject(projectToFill);
     },
     [setProject]
   );

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import useApp from "../../hooks/useApp";
-import { AboutMe } from "../../model/aboutme";
-import { Project } from "../../model/project";
-import AboutMeCard from "../cards/AboutMeCard";
-import ProjectCard from "../cards/ProjectCard";
-import { themes } from "../../styles/ColorStyles";
-import { MediumText } from "../../styles/TextStyles";
-import createApiClient from "../../api/api-client-factory";
-import useProject from "../../hooks/useProject";
-import { useHistory } from "react-router";
-import useAuth from "../../hooks/useAuth";
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import useApp from '../../hooks/useApp';
+import { AboutMe } from '../../model/aboutme';
+import { Project } from '../../model/project';
+import AboutMeCard from '../cards/AboutMeCard';
+import ProjectCard from '../cards/ProjectCard';
+import { themes } from '../../styles/ColorStyles';
+import { MediumText } from '../../styles/TextStyles';
+import createApiClient from '../../api/api-client-factory';
+import useProject from '../../hooks/useProject';
+import { useHistory } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 
 interface Response {
   aboutme?: AboutMe;
@@ -24,7 +24,7 @@ const Dashboard = () => {
   const [error, setError] = useState<string | undefined>(undefined);
 
   const { user } = useAuth();
-  
+
   const { addNotification, removeLastNotification } = useApp();
 
   const { setProjectOrUndefined } = useProject();
@@ -34,12 +34,12 @@ const Dashboard = () => {
     async function retrieveInfo() {
       const api = createApiClient();
       try {
-        startSearch(t("loader.text"));
+        startSearch(t('loader.text'));
         const projects: Project[] = await api.getProjects();
         const aboutme: AboutMe = await api.getAboutMe();
         setResponse({ aboutme, projects });
-      } catch(Error) {
-        setError("Info not found");
+      } catch (Error) {
+        setError('Info not found');
       } finally {
         stopSearch();
       }
@@ -50,19 +50,17 @@ const Dashboard = () => {
       setError(undefined);
       addNotification(msg);
     }
-  
+
     function stopSearch() {
       removeLastNotification();
     }
-
-    
 
     retrieveInfo();
   }, [setResponse, t, addNotification, removeLastNotification]);
 
   async function deleteProject(element: React.MouseEvent<HTMLElement>, id: string) {
-    element.preventDefault()
-    element.stopPropagation()
+    element.preventDefault();
+    element.stopPropagation();
     const api = createApiClient();
     try {
       await api.deleteProject(id);
@@ -70,16 +68,16 @@ const Dashboard = () => {
       const aboutme: AboutMe = await api.getAboutMe();
       setResponse({ aboutme, projects });
     } catch (e) {
-      console.log("Error deleting project", e);
+      console.log('Error deleting project', e);
     }
-  }   
+  }
 
   function updateProject(element: React.MouseEvent<HTMLElement>, project: Project) {
-    element.preventDefault()
-    element.stopPropagation()
+    element.preventDefault();
+    element.stopPropagation();
     setProjectOrUndefined(project);
-    history.push("/admin");
-  }   
+    history.push('/admin');
+  }
 
   return (
     <Wrapper>
@@ -91,13 +89,19 @@ const Dashboard = () => {
             </AboutMeWrapper>
             <ProjectWrapper>
               {response?.projects?.map((project, index) => (
-                <ProjectCard project={project} key={index} user={user} closeButton={(e, id) => deleteProject(e, id)} updateButton={(e, id) => updateProject(e, id)} />
+                <ProjectCard
+                  project={project}
+                  key={index}
+                  user={user}
+                  closeButton={(e, id) => deleteProject(e, id)}
+                  updateButton={(e, id) => updateProject(e, id)}
+                />
               ))}
             </ProjectWrapper>
           </ResponseWrapper>
         )}
 
-        {error && <ErrorMsg>{t("dashboard.error")}</ErrorMsg>}
+        {error && <ErrorMsg>{t('dashboard.error')}</ErrorMsg>}
       </ContentWrapper>
     </Wrapper>
   );
@@ -156,7 +160,7 @@ const ProjectWrapper = styled.div`
     grid-template-columns: auto auto;
   }
 
-  @media (max-width: 1080px) {  
+  @media (max-width: 1080px) {
     grid-template-columns: auto auto auto;
     gap: 20px;
   }

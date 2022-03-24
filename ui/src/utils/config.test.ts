@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-export {}
-
+export {};
 
 beforeEach(() => {
   jest.resetModules();
@@ -8,38 +7,37 @@ beforeEach(() => {
   delete process.env.REACT_APP_API_URI;
 });
 
-
-test("config with api base url from environment variable", () => {
+test('config with api base url from environment variable', () => {
   // Given
-  const anyBaseUrl = "any-base-url";
+  const anyBaseUrl = 'any-base-url';
   process.env.REACT_APP_BASE_URI = anyBaseUrl;
 
   // When
-  const { API_BASE_URI } = require("./config.ts");
+  const { API_BASE_URI } = require('./config');
 
   // Then
   expect(API_BASE_URI).toBe(anyBaseUrl);
 });
 
-test("config with api base url with another path", () => {
+test('config with api base url with another path', () => {
   // Given
-  const anyBaseUrl = "any-base-url";
+  const anyBaseUrl = 'any-base-url';
   process.env.REACT_APP_BASE_URI = anyBaseUrl;
 
   // And
-  const extraPath = "/extraPath";
+  const extraPath = '/extraPath';
   process.env.REACT_APP_API_URI = extraPath;
 
   // When
-  const { API_BASE_URI } = require("./config.ts");
+  const { API_BASE_URI } = require('./config');
 
   // Then
   expect(API_BASE_URI).toBe(anyBaseUrl + extraPath);
 });
 
-test("config with no api base url", () => {
+test('config with no api base url', () => {
   // When
-  const { API_BASE_URI } = require("./config.ts");
+  const { API_BASE_URI } = require('./config');
 
   // Then
   expect(API_BASE_URI).toBeUndefined();
