@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - ../../base
   - mongo-pvc.yaml
+  - ingress.yaml
 
 patchesJson6902:
   - patch: |
