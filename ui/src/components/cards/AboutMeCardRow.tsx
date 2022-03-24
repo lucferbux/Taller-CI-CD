@@ -30,8 +30,7 @@ const AboutMeCardRow = (props: AboutMeCardRowProps) => {
         ) : (
           <InfoValue>{formatDate(props.value)}</InfoValue>
         )}
-      </InfoValueWrapper>
-    </InfoDetailBox>
+      </InfoValueWrapper></InfoDetailBox>
   );
 };
 
