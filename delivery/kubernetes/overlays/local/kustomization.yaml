@@ -6,5 +6,6 @@ resources:
   - ../../base
   - mongo-pv.yaml
   - ingress.yaml
+  - mongo-pvc.yaml
 
 namespace: portfolio-app-local

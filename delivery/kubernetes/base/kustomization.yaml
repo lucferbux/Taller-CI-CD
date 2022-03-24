@@ -11,4 +11,3 @@ resources:
   - frontend.yaml
   - mongo-configmap.yaml
   - mongo.yaml
-  - mongo-pvc.yaml
