@@ -18,7 +18,7 @@ const projectMock: Project = {
 
 const userLogggedMock: User = {
   active: true,
-  _id: "a8sfd9sf",
+  id: "a8sfd9sf",
   email: "johndoe@gmail.com",
 };
 

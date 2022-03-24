@@ -9,7 +9,7 @@ let apiBaseUrl = process.env.REACT_APP_API_URI;
 
 if (baseUrl) {
   apiBaseUrl = apiBaseUrl ?? '';
-  baseUrl =  baseUrl + apiBaseUrl;
+  baseUrl = baseUrl + apiBaseUrl;
 }
 
 export const API_BASE_URI = baseUrl;
