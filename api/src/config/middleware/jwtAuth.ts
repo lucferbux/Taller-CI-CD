@@ -6,7 +6,7 @@ import HttpError from '@/config/error';
 import * as http from 'http';
 
 interface RequestWithUser extends Request {
-    user: object | string;
+  user: object | string;
 }
 
 /**
@@ -24,20 +24,21 @@ interface RequestWithUser extends Request {
  *       bearerFormat: JWT
  */
 export function isAuthenticated(req: RequestWithUser, res: Response, next: NextFunction): void {
+  const token: any = req.cookies.token;
 
-    const token: any = req.cookies.token;
+  if (token) {
+    try {
+      const user: object | string = jwt.verify(token, app.get('secret'));
 
-    if (token) {
-        try {
-            const user: object | string = jwt.verify(token, app.get('secret'));
+      req.user = user;
 
-            req.user = user;
-
-            return next();
-        } catch (error) {
-            return next(new HttpError(HttpStatus.UNAUTHORIZED, http.STATUS_CODES[HttpStatus.UNAUTHORIZED]));
-        }
+      return next();
+    } catch (error) {
+      return next(
+        new HttpError(HttpStatus.UNAUTHORIZED, http.STATUS_CODES[HttpStatus.UNAUTHORIZED])
+      );
     }
+  }
 
-    return next(new HttpError(HttpStatus.BAD_REQUEST, 'No token provided'));
+  return next(new HttpError(HttpStatus.BAD_REQUEST, 'No token provided'));
 }
