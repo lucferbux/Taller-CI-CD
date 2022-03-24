@@ -64,7 +64,7 @@ function dateMakesTokenExpired() {
 }
 
 beforeEach(() => {
-  jest.useFakeTimers();
+  jest.useFakeTimers('legacy');
   Date.now = jest.fn(() => CURRENT_TIMESTAMP);
 });
 
