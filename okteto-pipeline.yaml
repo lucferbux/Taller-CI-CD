@@ -1,3 +1,2 @@
 deploy:
-  - kubectl create namespace portfolio-app-deploy
   - kubectl apply -k delivery/kubernetes/overlays/okteto

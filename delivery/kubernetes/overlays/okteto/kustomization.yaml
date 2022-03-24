@@ -4,5 +4,3 @@ kind: Kustomization
 
 resources:
   - ../../base
-
-namespace: portfolio-app-deploy
