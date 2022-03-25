@@ -5,7 +5,7 @@ name: CD
 on:
   push:
     branches:
-      - master
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,16 +21,19 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-      - name: Get Kubeconfig
-        uses: okteto/actions/namespace@v1
-        id: namespace
+     
+      - name: context
+        uses: okteto/context@latest
         with:
           token: ${{ secrets.OKTETO_TOKEN }}
-          namespace: taller-ci-cd
+
+      - name: "Activate Namespace"
+        uses: okteto/namespace@latest
+        with:
+          name: taller-ci-cd
+     
       - name: Trigger Pipeline
-        uses: okteto/actions/deploy@v1
-        env:
-          KUBECONFIG: ${{ steps.namespace.outputs.kubeconfig }}
+        uses: okteto/pipeline@latest
         with:
           name: okteto-pipeline.yaml
           timeout: 8m
