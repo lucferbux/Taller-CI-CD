@@ -15,7 +15,6 @@
     "start:dev": "nodemon",
     "dev": "nodemon",
     "build": "tsc",
-    "postinstall": "npm run build",
     "test": "NODE_ENV=test mocha --require ts-node/register test/index.js --exit",
     "test-debug": "NODE_ENV=test mocha --inspect-brk --inspect -r ts-node/register test/index.js --exit",
     "lint": "eslint src"

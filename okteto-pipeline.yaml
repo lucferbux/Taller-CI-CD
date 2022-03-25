@@ -1,4 +1,4 @@
 deploy:
-  - okteto build -t okteto.dev/api:latest ./api
+  - okteto build -t okteto.dev/api:latest -f ./api/prod.Dockerfile ./api
   - okteto build -t okteto.dev/nginx:latest -f nginx/Dockerfile .
   - kubectl apply -k delivery/kubernetes/overlays/okteto

@@ -26,11 +26,6 @@ jobs:
         uses: okteto/context@latest
         with:
           token: ${{ secrets.OKTETO_TOKEN }}
-
-      - name: "Activate Namespace"
-        uses: okteto/namespace@latest
-        with:
-          name: taller-ci-cd
      
       - name: Trigger Pipeline
         uses: okteto/pipeline@latest

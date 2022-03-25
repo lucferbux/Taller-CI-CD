@@ -93,7 +93,7 @@ test:
 
 .PHONY: docker-build-images
 docker-build-images:
-	docker build -t $(DOCKER_NAMESPACE)/api:$(DOCKER_TAG_SNAPSHOT) ./api
+	docker build -t $(DOCKER_NAMESPACE)/api:$(DOCKER_TAG_SNAPSHOT) -f ./api/prod.Dockerfile ./api
 	docker build -t $(DOCKER_NAMESPACE)/nginx:$(DOCKER_TAG_SNAPSHOT) -f nginx/Dockerfile .
 
 .PHONY: docker-deploy
