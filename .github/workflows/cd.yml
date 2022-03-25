@@ -1,0 +1,36 @@
+# Linter work 
+name: CD
+
+# Controls when the workflow will run
+on:
+  push:
+    branches:
+      - master
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Kubeconfig
+        uses: okteto/actions/namespace@v1
+        id: namespace
+        with:
+          token: ${{ secrets.OKTETO_TOKEN }}
+          namespace: taller-ci-cd
+      - name: Trigger Pipeline
+        uses: okteto/actions/deploy@v1
+        env:
+          KUBECONFIG: ${{ steps.namespace.outputs.kubeconfig }}
+        with:
+          name: okteto-pipeline.yaml
+          timeout: 8m
