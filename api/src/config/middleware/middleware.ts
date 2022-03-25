@@ -9,6 +9,7 @@ import rateLimit, { RateLimitRequestHandler } from 'express-rate-limit';
 import { HttpError } from '@/config/error';
 import { sendHttpErrorModule } from '@/config/error/sendHttpError';
 import Logger from '@/utils/Logger';
+import * as Sentry from '@sentry/node';
 
 const limiter: RateLimitRequestHandler = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -48,6 +49,27 @@ export function configure(app: express.Application): void {
 
   // custom errors
   app.use(sendHttpErrorModule);
+
+  // RequestHandler creates a separate execution context using domains, so that every
+  // transaction/span/breadcrumb is attached to its own Hub instance
+  app.use(Sentry.Handlers.requestHandler());
+  // TracingHandler creates a trace for every incoming request
+  app.use(Sentry.Handlers.tracingHandler());
+
+  // The error handler must be before any other error middleware and after all controllers
+  app.use(Sentry.Handlers.errorHandler());
+
+  app.use(
+    Sentry.Handlers.errorHandler({
+      shouldHandleError(error) {
+        // Capture all 404 and 500 errors
+        if (error.status === 404 || error.status === 500) {
+          return true;
+        }
+        return false;
+      }
+    })
+  );
 }
 
 interface CustomResponse extends express.Response {
@@ -75,7 +97,7 @@ export function initErrorHandler(app: express.Application): void {
         res.sendHttpError(error, error.message);
       }
     }
-
+    Sentry.captureException(new Error(`${error}`));
     Logger.error(error);
   });
 }
