@@ -13,6 +13,7 @@ services:
       NGINX_PORT: 80
       NGINX_HTTPS_PORT: 443
       FORCE_HTTPS: 'false'
+      REACT_APP_SENTRY_API: https://5bb4e6d8480b4bda905a5715821206bb@o1177838.ingest.sentry.io/6288957
     ports:
       - 80:80
       - 443:443
@@ -36,6 +37,7 @@ services:
       SECRET: e42d8dd28adf34fc489044d5aa21e5166f22a6ef
       MONGODB_URI: mongodb://mongodb:27017/
       MONGODB_DB_MAIN: portfolio_db
+      SENTRY_API: https://dd48265c46c54f5db36bc7c645936650@o1177838.ingest.sentry.io/6288993
       PORT: 4000
     networks:
       - mynet

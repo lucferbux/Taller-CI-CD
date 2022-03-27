@@ -6,3 +6,4 @@ data:
   nginx_port: "80"
   nginx_https_port: "443"
   force_https: "false"
+  sentry_api: https://5bb4e6d8480b4bda905a5715821206bb@o1177838.ingest.sentry.io/6288957

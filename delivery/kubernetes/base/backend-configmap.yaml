@@ -6,3 +6,4 @@ data:
   node_env: production
   node_port: "4000"
   api_url: api-express-service:4000
+  sentry_api: https://dd48265c46c54f5db36bc7c645936650@o1177838.ingest.sentry.io/6288993
