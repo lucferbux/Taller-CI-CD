@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from 'express';
 import app from '@/config/server/server';
 import HttpError from '@/config/error';
 import * as http from 'http';
-
+import * as Sentry from '@sentry/node';
 interface RequestWithUser extends Request {
   user: object | string;
 }
@@ -39,6 +39,6 @@ export function isAuthenticated(req: RequestWithUser, res: Response, next: NextF
       );
     }
   }
-
-  return next(new HttpError(HttpStatus.BAD_REQUEST, 'No token provided'));
+  Sentry.captureException(new Error('No token provided in the request'));
+  return next(new HttpError(HttpStatus.UNAUTHORIZED, http.STATUS_CODES[HttpStatus.UNAUTHORIZED]));
 }
