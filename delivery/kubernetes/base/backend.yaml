@@ -47,6 +47,11 @@ spec:
               configMapKeyRef:
                 name: mongodb-configmap
                 key: database_name
+          - name: SENTRY_API
+            valueFrom: 
+              configMapKeyRef:
+                name: backend-configmap
+                key: sentry_api
 ---
 apiVersion: v1
 kind: Service
