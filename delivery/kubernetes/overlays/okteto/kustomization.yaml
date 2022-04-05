@@ -18,8 +18,24 @@ patchesJson6902:
       version: v1
   - patch: |
       - op: replace
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: "Always"
+    target:
+      kind: Deployment
+      name: api-express
+      version: v1
+  - patch: |
+      - op: replace
         path: /spec/template/spec/containers/0/image
         value: "okteto.dev/nginx:latest"
+    target:
+      kind: Deployment
+      name: front-nginx
+      version: v1
+  - patch: |
+      - op: replace
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: "Always"
     target:
       kind: Deployment
       name: front-nginx
