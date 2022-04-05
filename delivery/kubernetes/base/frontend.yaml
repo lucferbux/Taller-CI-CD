@@ -17,6 +17,7 @@ spec:
       containers:
       - name: front-nginx
         image: lucferbux/nginx:VERSION-1509e71-SNAPSHOT
+        imagePullPolicy: "IfNotPresent"
         resources:
           limits:
             cpu: 500m
