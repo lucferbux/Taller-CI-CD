@@ -145,6 +145,7 @@ k8s-delete-all:
 k8s-expose-service:
 	minikube service frontend-nginx-service --url -n portfolio-app-local 
 
+# Check /etc/hosts
 .PHONY: k8s-ingress
 k8s-ingress:
 	minikube addons enable ingress && minikube tunnel
