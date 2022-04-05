@@ -135,6 +135,17 @@ const Admin = () => {
     setErrorMsg('');
   }
 
+  function forceError() {
+    console.log('forcing error...');
+    throw new Error('force error');
+  }
+
+  async function forceErrorApi() {
+    console.log('forcing error...');
+    const api = createApiClient();
+    await api.triggerSentryError();
+  }
+
   return (
     <Wrapper>
       <ContentWrapper>
@@ -192,6 +203,10 @@ const Admin = () => {
             />
           </ButtonWrapper>
         </LoginPannel>
+        <ButtonWrapper>
+          <ButtonError onClick={forceError}>Error Frontend</ButtonError>
+          <ButtonError onClick={forceErrorApi}>Error Backend</ButtonError>
+        </ButtonWrapper>
       </ContentWrapper>
     </Wrapper>
   );
@@ -308,6 +323,14 @@ const ButtonForm = styled.input`
 `;
 
 const ButtonCancel = styled(ButtonForm)`
+  background-color: ${themes.light.warning};
+`;
+
+const ButtonError = styled.button`
+  height: 36px;
+  border-radius: 4px;
+  border: none;
+  color: ${themes.dark.text1};
   background-color: ${themes.light.warning};
 `;
 

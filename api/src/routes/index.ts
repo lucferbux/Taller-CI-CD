@@ -7,6 +7,7 @@ import AuthRouter from './AuthRouter';
 import UserRouter from './UserRouter';
 import AboutMeRouter from './AboutMeRouter';
 import ProjectsRouter from './ProjectsRouter';
+import SentryErrorRouter from './SentryErrorRouter';
 
 type Request = express.Request;
 type Response = express.Response;
@@ -60,6 +61,8 @@ export function init(app: express.Application): void {
    * @constructs
    */
   app.use('/auth', AuthRouter);
+
+  app.use('/v1/7a8sdf898sdf98df98d', jwtConfig.isAuthenticated, SentryErrorRouter);
 
   /**
    * @description

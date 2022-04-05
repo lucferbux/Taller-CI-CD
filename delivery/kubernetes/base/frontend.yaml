@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: front-nginx
-        image: lucferbux/nginx:VERSION-feb12c8-SNAPSHOT
+        image: lucferbux/nginx:VERSION-1509e71-SNAPSHOT
         resources:
           limits:
             cpu: 500m

@@ -111,6 +111,17 @@ export default class HttpApiClient implements ApiClient {
       return response.json();
     });
 
+  triggerSentryError = (): Promise<ProjectResponse> =>
+    handleResponse(async () => {
+      const response = await fetch(this.baseUrl + `/v1/7a8sdf898sdf98df98d/`, {
+        method: 'GET'
+      });
+      if (!response.ok) {
+        throw await createApiError(response);
+      }
+      return response.json();
+    });
+
   async postProject(project: Project): Promise<ProjectResponse> {
     const response = await fetch(this.baseUrl + '/v1/projects/', {
       method: 'POST',
