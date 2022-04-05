@@ -96,6 +96,11 @@ docker-build-images:
 	docker build -t $(DOCKER_NAMESPACE)/api:$(DOCKER_TAG_SNAPSHOT) -f ./api/prod.Dockerfile ./api
 	docker build -t $(DOCKER_NAMESPACE)/nginx:$(DOCKER_TAG_SNAPSHOT) -f nginx/Dockerfile .
 
+.PHONY: docker-build-deploy-multiplatform
+docker-build-deploy-multiplatform:
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(DOCKER_NAMESPACE)/api:$(DOCKER_TAG_SNAPSHOT) -f ./api/prod.Dockerfile ./api --push
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(DOCKER_NAMESPACE)/nginx:$(DOCKER_TAG_SNAPSHOT) -f nginx/Dockerfile . --push
+
 .PHONY: docker-deploy
 docker-deploy: docker-build-images
 	for component in api nginx; do \
