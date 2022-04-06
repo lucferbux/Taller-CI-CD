@@ -1,4 +1,6 @@
 deploy:
-  - okteto build -t okteto.dev/api:latest -f ./api/prod.Dockerfile ./api
-  - okteto build -t okteto.dev/nginx:latest -f nginx/Dockerfile .
-  - kubectl apply -k delivery/kubernetes/overlays/okteto
+  - okteto build -t okteto.dev/api:${OKTETO_GIT_COMMIT} -f ./api/prod.Dockerfile ./api
+  - okteto build -t okteto.dev/nginx:${OKTETO_GIT_COMMIT} -f nginx/Dockerfile .
+  - cd delivery/kubernetes/overlays/okteto
+  - kustomize edit set image api-express=okteto.dev/api:${OKTETO_GIT_COMMIT} front-nignx=okteto.dev/nginx:${OKTETO_GIT_COMMIT}
+  - kubectl apply -k .

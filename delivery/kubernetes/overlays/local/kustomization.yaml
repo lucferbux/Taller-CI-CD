@@ -8,4 +8,10 @@ resources:
   - ingress.yaml
   - mongo-pvc.yaml
 
+images:
+  - name: front-nginx
+    newName: lucferbux/nginx:VERSION-1509e71-SNAPSHOT
+  - name: api-express
+    newName: lucferbux/api:VERSION-1509e71-SNAPSHOT
+
 namespace: portfolio-app-local

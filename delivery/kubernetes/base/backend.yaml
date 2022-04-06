@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
       - name: api-express
-        image: lucferbux/api:VERSION-1509e71-SNAPSHOT
-        imagePullPolicy: "IfNotPresent"
+        image: api-express
         resources:
           limits:
             cpu: 500m
