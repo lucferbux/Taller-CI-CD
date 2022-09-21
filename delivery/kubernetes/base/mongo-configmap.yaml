@@ -10,7 +10,7 @@ data:
 
     db.createCollection('users');
     db.createCollection('profile');
-    db.createCollection('profile');
+    db.createCollection('projects');
 
     db.users.insertMany([
         {
