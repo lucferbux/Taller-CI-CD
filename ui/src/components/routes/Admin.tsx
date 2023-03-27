@@ -137,6 +137,7 @@ const Admin = () => {
 
   function forceError() {
     console.log('forcing error...');
+    alert('Error triggered');
     throw new Error('force error');
   }
 
@@ -144,6 +145,7 @@ const Admin = () => {
     console.log('forcing error...');
     const api = createApiClient();
     await api.triggerSentryError();
+    alert('Error triggered');
   }
 
   return (

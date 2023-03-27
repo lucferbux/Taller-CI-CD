@@ -48,7 +48,7 @@ spec:
               configMapKeyRef:
                 name: frontend-configmap
                 key: force_https
-          - name: REACT_APP_SENTRY_API
+          - name: VITE_SENTRY_API
             valueFrom: 
               configMapKeyRef:
                 name: frontend-configmap
