@@ -1,5 +1,6 @@
 FROM node:18-alpine3.17 AS builder
 WORKDIR /usr/src/app
+ENV VITE_SENTRY_API https://5bb4e6d8480b4bda905a5715821206bb@o1177838.ingest.sentry.io/6288957
 COPY ui/package*.json ./
 ADD ui/package.json /usr/src/app/package.json
 RUN npm install
