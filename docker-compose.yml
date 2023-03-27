@@ -8,8 +8,8 @@ services:
       context: ./ui
       dockerfile: Dockerfile
     environment:
-      REACT_APP_PROXY_HOST: http://api:4000
-      REACT_APP_SENTRY_API: https://5bb4e6d8480b4bda905a5715821206bb@o1177838.ingest.sentry.io/6288957
+      VITE_PROXY_HOST: http://api:4000
+      VITE_SENTRY_API: https://5bb4e6d8480b4bda905a5715821206bb@o1177838.ingest.sentry.io/6288957
     ports:
       - 3000:3000
     depends_on:

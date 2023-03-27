@@ -1,14 +1,13 @@
-FROM node:17-alpine3.14 AS builder
+FROM node:18-alpine3.17 AS builder
 WORKDIR /usr/src/app
-RUN npm install react-scripts@4.0.3 -g
 COPY ui/package*.json ./
 ADD ui/package.json /usr/src/app/package.json
 RUN npm install
 COPY ./ui/ .
-RUN npm run build:docker
+RUN npm run build
 
 
-FROM nginx:1.21.6-alpine
+FROM nginx:1.21.6-alpine AS runtime
 ENV NGINX_PORT 80
 ENV NGINX_HTTPS_PORT 443
 ENV FORCE_HTTPS 'false'
@@ -18,4 +17,4 @@ COPY ./nginx/default.conf.template /etc/nginx/templates/
 # Copy certificates
 COPY ./nginx/certificates/ /var/certificates
 # Copy deployment
-COPY --from=builder /usr/src/app/build/ /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist/ /usr/share/nginx/html

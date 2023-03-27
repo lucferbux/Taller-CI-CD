@@ -13,7 +13,7 @@ services:
       NGINX_PORT: 80
       NGINX_HTTPS_PORT: 443
       FORCE_HTTPS: 'false'
-      REACT_APP_SENTRY_API: https://5bb4e6d8480b4bda905a5715821206bb@o1177838.ingest.sentry.io/6288957
+      VITE_SENTRY_API: https://5bb4e6d8480b4bda905a5715821206bb@o1177838.ingest.sentry.io/6288957
     ports:
       - 80:80
       - 443:443
