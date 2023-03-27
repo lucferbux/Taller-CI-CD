@@ -11,7 +11,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ProjectProvider } from './context/ProjectContext';
 
 Sentry.init({
-  dsn:import.meta.env.VITE_SENTRY_API,
+  dsn: import.meta.env.VITE_SENTRY_API,
   integrations: [new BrowserTracing()],
 
   // Set tracesSampleRate to 1.0 to capture 100%
