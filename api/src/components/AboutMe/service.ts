@@ -1,4 +1,4 @@
-import * as Joi from '@hapi/joi';
+import Joi from 'joi';
 import AboutMeModel, { IAboutMeModel } from './model';
 import AboutMeValidation from './validation';
 import { IAboutMeService } from './interface';
@@ -15,11 +15,12 @@ const AboutMeService: IAboutMeService = {
    */
   async findAll(): Promise<IAboutMeModel> {
     try {
-      const result: IAboutMeModel[] = await AboutMeModel.find({});
+      const result = await AboutMeModel.find({});
       if (result.length > 0) {
         return result[0];
+      } else {
+        throw new Error('empty search');
       }
-      throw new Error('empty search');
     } catch (error) {
       throw new Error(error.message);
     }

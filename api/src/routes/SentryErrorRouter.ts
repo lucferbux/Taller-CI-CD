@@ -8,7 +8,7 @@ const router: Router = Router();
 
 router.get('/', function mainHandler(req, res) {
   Sentry.captureException(new Error('My first issue'));
-  res.end('Issue captured');
+  res.status(500).json({ message: 'Critical error' });
 });
 
 /**

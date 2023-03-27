@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useApp from '../../hooks/useApp';
 import useAuth from '../../hooks/useAuth';
@@ -8,8 +8,7 @@ import { themes } from '../../styles/ColorStyles';
 import { Caption, H1 } from '../../styles/TextStyles';
 
 const Login = () => {
-  const history = useHistory();
-  const location = useLocation();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { login } = useAuth();
   const { addNotification, removeLastNotification } = useApp();
@@ -18,7 +17,24 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
-  const { from } = (location.state as any) || { from: { pathname: '/' } };
+  async function doLogin(event: FormEvent<HTMLFormElement>) {
+    dismissError();
+    event.preventDefault();
+    if (!readyToSubmit()) {
+      setErrorMsg(t('login.err_usr_pass'));
+      return;
+    }
+
+    try {
+      addNotification(t('loader.text'));
+      await login(username, password);
+      navigate('/admin');
+    } catch (e) {
+      setErrorMsg(t('login.err_inv_lgn'));
+    } finally {
+      removeLastNotification();
+    }
+  }
 
   function onChangeAnyInput() {
     setErrorMsg('');
@@ -40,25 +56,6 @@ const Login = () => {
 
   function dismissError() {
     setErrorMsg('');
-  }
-
-  async function doLogin(event: FormEvent<HTMLFormElement>) {
-    dismissError();
-    event.preventDefault();
-    if (!readyToSubmit()) {
-      setErrorMsg(t('login.err_usr_pass'));
-      return;
-    }
-
-    try {
-      addNotification(t('loader.text'));
-      await login(username, password);
-      history.replace(from);
-    } catch (e) {
-      setErrorMsg(t('login.err_inv_lgn'));
-    } finally {
-      removeLastNotification();
-    }
   }
 
   return (

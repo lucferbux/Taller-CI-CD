@@ -13,8 +13,8 @@ export function ProjectProvider({ children }: Props) {
   const [project, setProject] = useState<Project | undefined>(undefined);
 
   const setProjectOrUndefined = useCallback(
-    (projectToFill: Project | undefined) => {
-      setProject(projectToFill);
+    (newProject: Project | undefined) => {
+      setProject(newProject);
     },
     [setProject]
   );

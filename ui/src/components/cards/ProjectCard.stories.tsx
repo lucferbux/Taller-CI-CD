@@ -20,7 +20,11 @@ const project: Project = {
   timestamp: 765817712000
 };
 
-const userLoggged: User = { active: true, id: 'a8sfd9sf', email: 'johndoe@gmail.com' };
+const userLoggged: User = {
+  active: true,
+  id: 'a8sfd9sf',
+  email: 'johndoe@gmail.com'
+};
 
 const Template: ComponentStory<typeof ProjectCard> = (args) => <ProjectCard {...args} />;
 

@@ -1,4 +1,4 @@
-import * as Joi from '@hapi/joi';
+import Joi from 'joi';
 import { Types } from 'mongoose';
 
 /**
@@ -30,7 +30,10 @@ abstract class Validation {
       },
       validate(value: any, helpers: Joi.Context): any {
         if (!Types.ObjectId.isValid(value)) {
-          return { value: Types.ObjectId(value), errors: helpers.error('objectId') };
+          return {
+            value: Types.ObjectId(value),
+            errors: helpers.error('objectId')
+          };
         }
       }
     }));

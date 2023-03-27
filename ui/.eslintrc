@@ -19,7 +19,7 @@
   "plugins": ["react", "react-hooks", "@typescript-eslint", "import"],
   "env": {
     "browser": true,
-    "es6": true,
+    "es6": true
   },
   "globals": {
     "Atomics": "readonly",
@@ -38,7 +38,8 @@
         "devDependencies": [
           "**/*.stories.*",
           "**/.storybook/**/*.*",
-          "**/.jest-canvas-mock/**/*.*"
+          "**/.jest-canvas-mock/**/*.*",
+          "**/*.d.ts"
         ],
         "peerDependencies": true
       }
