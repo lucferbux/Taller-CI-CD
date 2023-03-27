@@ -20,12 +20,12 @@ export interface IUserRequest {
 export interface IUserModel extends Document {
   email: string;
   password: string;
-  passwordResetToken: string;
-  passwordResetExpires: Date;
+  passwordResetToken?: string;
+  passwordResetExpires?: Date;
 
-  tokens: AuthToken[];
+  tokens?: AuthToken[];
 
-  comparePassword: (password: string) => Promise<boolean>;
+  comparePassword?: (password: string) => Promise<boolean>;
 }
 
 export type AuthToken = {
@@ -33,7 +33,7 @@ export type AuthToken = {
   kind: string;
 };
 
-const UserSchema: Schema = new Schema(
+const UserSchema = new Schema<IUserModel>(
   {
     email: {
       type: String,
@@ -50,19 +50,16 @@ const UserSchema: Schema = new Schema(
     versionKey: false
   }
 ).pre('save', async function (next: NextFunction): Promise<void> {
-  // eslint-disable-next-line @typescript-eslint/no-this-alias
-  const user: any = this;
-
-  if (!user.isModified('password')) {
+  if (!this.isModified('password')) {
     return next();
   }
 
   try {
     const salt: string = await bcrypt.genSalt(10);
 
-    const hash: string = await bcrypt.hash(user.password, salt);
+    const hash: string = await bcrypt.hash(this.password, salt);
 
-    user.password = hash;
+    this.password = hash;
     next();
   } catch (error) {
     return next(error);

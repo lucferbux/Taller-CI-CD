@@ -1,9 +1,11 @@
 import React from 'react';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { render, screen } from '@testing-library/react';
 import ProjectCard from '../ProjectCard';
 import { Project } from '../../../model/project';
 import { User } from '../../../model/user';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { test, expect } from 'vitest';
 
 const projectMock: Project = {
   _id: '8a9sdfasdf989fd',

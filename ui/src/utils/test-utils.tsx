@@ -1,5 +1,6 @@
 import { FC, ReactElement } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { render, RenderOptions } from '@testing-library/react';
 import { AuthProvider } from '../context/AuthContext';
 
@@ -14,6 +15,7 @@ const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>
   render(ui, { wrapper: AllTheProviders, ...options });
 
 // re-export everything
+// eslint-disable-next-line import/no-extraneous-dependencies
 export * from '@testing-library/react';
 
 // override render method

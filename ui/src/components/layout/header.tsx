@@ -54,7 +54,7 @@ const Header = () => {
                   try {
                     logout();
                     toggle();
-                  } catch (error) {
+                  } catch (e) {
                     console.log('Error logging out');
                   }
                 }

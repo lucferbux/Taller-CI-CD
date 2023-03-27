@@ -71,6 +71,7 @@ async function logout() {
     await api.logout();
   } catch (error) {
     console.log(error);
+    console.log('Error while logging out');
   }
 }
 

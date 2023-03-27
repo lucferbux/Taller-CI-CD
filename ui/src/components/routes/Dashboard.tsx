@@ -10,7 +10,7 @@ import { themes } from '../../styles/ColorStyles';
 import { MediumText } from '../../styles/TextStyles';
 import createApiClient from '../../api/api-client-factory';
 import useProject from '../../hooks/useProject';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 interface Response {
@@ -28,7 +28,7 @@ const Dashboard = () => {
   const { addNotification, removeLastNotification } = useApp();
 
   const { setProjectOrUndefined } = useProject();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function retrieveInfo() {
@@ -76,7 +76,7 @@ const Dashboard = () => {
     element.preventDefault();
     element.stopPropagation();
     setProjectOrUndefined(project);
-    history.push('/admin');
+    navigate('/admin');
   }
 
   return (
