@@ -5,7 +5,6 @@ import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
 import App from './components/App';
 import { AuthProvider } from './context/AuthContext';
-import { AppProvider } from './context/AppContext/AppContext';
 import './main.css';
 import { HelmetProvider } from 'react-helmet-async';
 import { ProjectProvider } from './context/ProjectContext';
@@ -25,11 +24,9 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <HelmetProvider>
     <AuthProvider>
-      <AppProvider>
-        <ProjectProvider>
-          <App />
-        </ProjectProvider>
-      </AppProvider>
+      <ProjectProvider>
+        <App />
+      </ProjectProvider>
     </AuthProvider>
   </HelmetProvider>
 );
