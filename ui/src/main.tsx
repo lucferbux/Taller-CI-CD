@@ -22,11 +22,13 @@ Sentry.init({
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
-  <HelmetProvider>
-    <AuthProvider>
-      <ProjectProvider>
-        <App />
-      </ProjectProvider>
-    </AuthProvider>
-  </HelmetProvider>
+  <React.StrictMode>
+    <HelmetProvider>
+      <AuthProvider>
+        <ProjectProvider>
+          <App />
+        </ProjectProvider>
+      </AuthProvider>
+    </HelmetProvider>
+  </React.StrictMode>
 );
