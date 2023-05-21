@@ -244,6 +244,7 @@ const ButtonForm = styled.input`
   border: none;
   background-color: ${themes.light.primary};
   color: ${themes.dark.text1};
+  opacity: ${(props) => (props.disabled ? '0.5' : '1')};
 
   @media (prefers-color-scheme: dark) {
     background-color: ${themes.dark.primary};
