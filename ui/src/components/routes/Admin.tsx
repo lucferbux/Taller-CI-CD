@@ -51,7 +51,7 @@ const Admin = () => {
       timestamp: projectInput?.timestamp || Date.now()
     };
 
-    createOrUpdate(newProject as Project, projectInput._id === undefined, errorMessage);
+    createOrUpdate(newProject as Project, errorMessage);
   }
 
   function onChange(e: ChangeEvent<HTMLInputElement>, attribute: keyof Project) {
