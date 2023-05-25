@@ -49,7 +49,7 @@ export default interface ApiClient {
   getDashboardInfo(): Promise<DashboardInfo>;
   postProject(project: Project): Promise<ProjectResponse>;
   updateProject(project: Project): Promise<ProjectResponse>;
-  createOrUpdateProject(project: Project, create: boolean): Promise<ProjectResponse>;
+  createOrUpdateProject(project: Project): Promise<ProjectResponse>;
   deleteProject(projectId: string): Promise<ProjectResponse>;
   triggerSentryError(): Promise<ProjectResponse>;
 }
