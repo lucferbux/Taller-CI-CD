@@ -34,7 +34,7 @@ const Header = ({ user, logout }: HeaderProps) => {
   const [isVisible, toggle] = useToggle(false);
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="navbar">
       <Link to={home.link}>
         <LinkButton>{t(home.title)}</LinkButton>
       </Link>
