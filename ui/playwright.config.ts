@@ -4,7 +4,10 @@ export default defineConfig({
   timeout: 5000,
   testDir: 'src/__tests__',
 
-  reporter: 'list',
+  reporter: [
+    ['github'],
+    ['html']
+  ],
   /* Configure projects for major browsers */
   projects: [
     {
