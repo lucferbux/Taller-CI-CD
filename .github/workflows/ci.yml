@@ -22,6 +22,7 @@ jobs:
     env:
       MONGODB_URI: mongodb://localhost:27017/
       MONGODB_DB_MAIN: portfolio_db_test
+      VITE_PROXY_HOST: http://localhost:4000
         
     services:
       mongodb:
@@ -41,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
+        run: cd ui && npx playwright install --with-deps chromium
       - name: Run Lint
         run: npm run lint
       - name: Run Tests
