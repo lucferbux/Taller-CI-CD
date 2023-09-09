@@ -37,6 +37,14 @@ db.on('connected', () => {
 
 db.once('open', () => {
   Logger.info('[MongoDB] connection opened');
+  if(process.env.NODE_ENV === 'test') {
+    Logger.info(`[MongoDB] has the following collections: ${Object.keys(db.collections)}`);
+    const collection  = db.collection("profile");
+    collection.find({}).toArray(function(err, data){
+      Logger.info(`[MongoDB] has the following profile: ${data?.[0]?.name}`);
+  });
+
+  }
 });
 
 db.on('reconnected', () => {
