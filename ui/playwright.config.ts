@@ -1,7 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-import flow from 'dotenv-flow';
-
-flow.config();
 
 export default defineConfig({
   timeout: 5000,
