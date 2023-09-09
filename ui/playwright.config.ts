@@ -4,7 +4,10 @@ export default defineConfig({
   timeout: 5000,
   testDir: 'src/__tests__',
 
-  reporter: 'html',
+  reporter: [
+    ['github'],
+    ['html']
+  ],
   /* Configure projects for major browsers */
   projects: [
     {
@@ -16,7 +19,8 @@ export default defineConfig({
     {
       command: 'cd ../api && npm run dev',
       port: 4000,
-      timeout: 120 * 1000
+      timeout: 120 * 1000,
+      stdout: 'pipe',
     },
     {
       command: 'npm run dev',
