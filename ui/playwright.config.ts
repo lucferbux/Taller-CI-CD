@@ -16,7 +16,8 @@ export default defineConfig({
     {
       command: 'cd ../api && npm run dev',
       port: 4000,
-      timeout: 120 * 1000
+      timeout: 120 * 1000,
+      stdout: 'pipe',
     },
     {
       command: 'npm run dev',
