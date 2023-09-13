@@ -17,10 +17,6 @@ export const menuData = [
     title: 'nav.dashboard',
     link: '/dashboard'
   },
-  {
-    title: 'nav.admin',
-    link: '/admin'
-  }
 ];
 
 interface HeaderProps {
