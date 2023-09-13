@@ -41,7 +41,7 @@
     "nav": {
         "home": "Inicio",
         "dashboard": "Dashboard",
-        "admin": "Admin"
+        "admin": "Gestión"
     },
     "aboutMeCard": {
         "name": "Nombre",
