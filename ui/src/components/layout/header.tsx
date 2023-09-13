@@ -16,7 +16,7 @@ export const menuData = [
   {
     title: 'nav.dashboard',
     link: '/dashboard'
-  },
+  }
 ];
 
 interface HeaderProps {
