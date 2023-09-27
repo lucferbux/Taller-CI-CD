@@ -12,7 +12,7 @@ test('Landing page', async ({ page }) => {
   // Check that the nav bar has the correct links
   await expect(page.getByRole('link', { name: 'Home' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Manage' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Admin' })).toBeVisible();
 });
 
 // Test Dashboard Page

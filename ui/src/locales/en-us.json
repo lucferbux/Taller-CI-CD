@@ -9,10 +9,10 @@
     "landing": {
         "title": "Welcome to my Portfolio"
     },
-    "loader" : {
+    "loader": {
         "text": "loading..."
     },
-    "dashboard" : {
+    "dashboard": {
         "error": "Error loading data"
     },
     "login": {
@@ -41,7 +41,7 @@
     "nav": {
         "home": "Home",
         "dashboard": "Dashboard",
-        "admin": "Manage"
+        "admin": "Admin"
     },
     "aboutMeCard": {
         "name": "Name",
